@@ -10,7 +10,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (manoj-dark)))
- '(package-selected-packages (quote (paredit cider clojure-mode avy))))
+ '(package-selected-packages
+   (quote
+    (multiple-cursors pymacs flycheck paredit cider clojure-mode avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -75,3 +77,11 @@
 
 ;; load python3 interpretor by default
 (setq python-shell-interpreter "python3")
+
+;; add html-mode to .tpl files
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
+
+;; multiple cursors mode
+(require 'multiple-cursors)
+(global-set-key (kbd "M-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
