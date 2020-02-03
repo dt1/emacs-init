@@ -1,4 +1,4 @@
-;; Added by Package.el.  This must come before configurations of
+ ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
@@ -69,11 +69,11 @@
 (setq show-paren-style 'parenthesis)
 (show-paren-mode t)
 
-;; yasnippet mode
-(add-to-list 'load-path
-              "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
+;; ;; yasnippet mode
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/yasnippet")
+;; (require 'yasnippet)
+;; (yas-global-mode 1)
 
 ;; load python3 interpretor by default
 (setq python-shell-interpreter "python3")
@@ -82,6 +82,10 @@
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
 
 ;; multiple cursors mode
-(require 'multiple-cursors)
-(global-set-key (kbd "M-n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
+;; (require 'multiple-cursors)
+;; (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
+
+;; mac MacOS sane;
+(setq mac-option-modifier 'control)
+(setq mac-command-modifier 'meta)
