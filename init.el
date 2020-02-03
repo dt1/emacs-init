@@ -12,7 +12,15 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(package-selected-packages
    (quote
-    (multiple-cursors pymacs flycheck paredit cider clojure-mode avy))))
+    (multiple-cursors
+     pymacs
+     flycheck
+     paredit
+     cider
+     clojure-mode
+     avy
+     yasnippet
+     multiple-cursors))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -69,11 +77,11 @@
 (setq show-paren-style 'parenthesis)
 (show-paren-mode t)
 
-;; ;; yasnippet mode
-;; (add-to-list 'load-path
-;;               "~/.emacs.d/plugins/yasnippet")
-;; (require 'yasnippet)
-;; (yas-global-mode 1)
+;; yasnippet mode
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; load python3 interpretor by default
 (setq python-shell-interpreter "python3")
@@ -82,10 +90,13 @@
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
 
 ;; multiple cursors mode
-;; (require 'multiple-cursors)
-;; (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
-;; (global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
+(require 'multiple-cursors)
+(global-set-key (kbd "M-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
 
-;; mac MacOS sane;
+;; mac MacOS sane
 (setq mac-option-modifier 'control)
 (setq mac-command-modifier 'meta)
+
+;; full screen
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
