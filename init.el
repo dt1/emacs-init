@@ -12,15 +12,7 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(package-selected-packages
    (quote
-    (multiple-cursors
-     pymacs
-     flycheck
-     paredit
-     cider
-     clojure-mode
-     avy
-     yasnippet
-     multiple-cursors))))
+    (vue-mode multiple-cursors flycheck paredit cider clojure-mode avy yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,6 +50,9 @@
 ;; column number
 (setq column-number-mode t)
 
+;; prevent mixing tabs and spaces
+(setq-default indent-tabs-mode nil)
+
 ;; ido mode
 (require 'ido)
 (ido-mode t)
@@ -68,9 +63,6 @@
 
 ;; avy mode (download from melpa)
 (global-set-key (kbd "C-x a") 'avy-goto-char-2)
-
-;; paredit mode (download from melpa / marmalade)
-(add-hook 'clojure-mode-hook #'paredit-mode)
 
 ;; highlight matching parens
 (require 'paren)
@@ -83,11 +75,6 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; load python3 interpretor by default
-(setq python-shell-interpreter "python3")
-
-;; add html-mode to .tpl files
-(add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
 
 ;; multiple cursors mode
 (require 'multiple-cursors)
@@ -100,3 +87,23 @@
 
 ;; full screen
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+;; delete whitespace on save:
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; language specific
+;; clojure
+;; paredit mode (download from melpa / marmalade)
+(add-hook 'clojure-mode-hook #'paredit-mode)
+
+;; python
+;; load python3 interpretor by default
+(setq python-shell-interpreter "/usr/local/bin/python3")
+
+;; add html-mode to .tpl files
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
+
+;; ;; javascript
+;; ;; electric-pair-mode
+;; (add-hook 'javascript-mode-hook #'electric-pair-mode)
+;; (electric-pair-skip-whites
