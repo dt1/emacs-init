@@ -1,4 +1,4 @@
- ;; Added by Package.el.  This must come before configurations of
+;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
@@ -24,6 +24,10 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+
+;; mac MacOS sane
+(setq mac-option-modifier 'control)
+(setq mac-command-modifier 'meta)
 
 ;; no blinking cursor
 (blink-cursor-mode 0)
@@ -81,9 +85,6 @@
 (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-n") 'mc/mark-all-like-this)
 
-;; mac MacOS sane
-(setq mac-option-modifier 'control)
-(setq mac-command-modifier 'meta)
 
 ;; full screen
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
