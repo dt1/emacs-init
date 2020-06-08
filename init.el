@@ -12,7 +12,7 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(package-selected-packages
    (quote
-    (vue-mode multiple-cursors flycheck paredit cider clojure-mode avy yasnippet))))
+    (markdown-mode vue-mode multiple-cursors flycheck paredit cider clojure-mode avy yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -107,3 +107,6 @@
 ;; ;; electric-pair-mode
 ;; (add-hook 'javascript-mode-hook #'electric-pair-mode)
 ;; (electric-pair-skip-whites
+
+;; fix javascript in vue-mode
+(add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
