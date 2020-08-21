@@ -104,6 +104,9 @@
 ;; add html-mode to .tpl files
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . html-mode))
 
+;; add html-mode to .ejs files
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . html-mode))
+
 ;; ;; javascript
 ;; ;; electric-pair-mode
 ;; (add-hook 'javascript-mode-hook #'electric-pair-mode)
