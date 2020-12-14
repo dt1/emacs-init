@@ -9,10 +9,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cider-lein-command "/usr/local/bin/lein")
  '(custom-enabled-themes (quote (manoj-dark)))
  '(package-selected-packages
    (quote
-    (markdown-mode vue-mode multiple-cursors flycheck paredit cider clojure-mode avy yasnippet))))
+    (company-rtags rtags nodejs-repl markdown-mode vue-mode multiple-cursors flycheck paredit cider clojure-mode avy yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -25,7 +26,7 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
-;; mac MacOS sane
+;; make MacOS sane
 (setq mac-option-modifier 'control)
 (setq mac-command-modifier 'meta)
 
@@ -114,3 +115,33 @@
 
 ;; fix javascript in vue-mode
 (add-hook 'vue-mode-hook (lambda () (setq syntax-ppss-table nil)))
+
+;; node-js repl
+(require 'nodejs-repl)
+
+
+(add-hook 'js-mode-hook
+          (lambda ()
+            (define-key js-mode-map (kbd "C-c C-c") 'nodejs-repl-send-last-expression)
+            (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-buffer)))
+
+;; fix cider:
+
+;; c++
+(require 'rtags)
+(setq rtags-autostart-diagnostics t)
+(rtags-diagnostics)
+
+(defun company-rtags-setup ()
+  "Configure company-backends for company-rtags."
+  (delete 'company-semantic company-backends)
+  (setq rtags-completions-enabled t)
+  (push '(company-rtags :with company-yasnippet) company-backends))
+
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'company-rtags-setup)
+
+;; fix python MacOS
+
+(define-key python-mode-map [remap backward-sentence] nil)
+(define-key python-mode-map [remap forward-sentence] nil)
