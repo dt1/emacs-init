@@ -143,5 +143,7 @@
 
 ;; fix python MacOS
 
-(define-key python-mode-map [remap backward-sentence] nil)
-(define-key python-mode-map [remap forward-sentence] nil)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map [remap backward-sentence] nil)
+            (define-key python-mode-map [remap forward-sentence] nil)))
